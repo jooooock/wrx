@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "魏如雪",
   "description": "你可以叫我小雪，我是夏如雯的好朋友",
-  "version": "2.6.7",
+  "version": "1.0",
   "permissions": [
     "declarativeNetRequest",
     "declarativeNetRequestFeedback",
@@ -30,21 +30,11 @@
         "lib/crypto-js@4.2.0.min.js",
         "lib/utils.js",
         "lib/store.js",
-        "lib/content.js"
+        "lib/content.js",
+        "scripts/auto.js"
       ],
       "css": [
         "toc.css"
-      ],
-      "run_at": "document_start",
-      "world": "ISOLATED",
-      "all_frames": false
-    },
-    {
-      "matches": [
-        "https://*.weread.qq.com/web/reader/*"
-      ],
-      "js": [
-        "scripts/auto.js"
       ],
       "run_at": "document_start",
       "world": "ISOLATED",
@@ -62,7 +52,7 @@
     },
     {
       "resources": [
-        "/overrides/6.21ec78ec.js"
+        "/overrides/6.0cf1335d.js"
       ],
       "matches": [
         "<all_urls>"
