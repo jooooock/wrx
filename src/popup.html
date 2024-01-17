@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>微信读书自动翻页</title>
+    <link rel="stylesheet" href="assets/bootstrap.min.css">
+    <script src="assets/popup.js"></script>
+    <style>
+        body {
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 400px;
+            padding-top: 1em;
+        }
+        form {
+            width: 100%;
+            padding: 10px 30px;
+        }
+    </style>
+</head>
+<body>
+<h1>微信读书自动翻页</h1>
+<form>
+    <div class="d-grid gap-2">
+        <div>
+            <span>翻页方式:</span>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="direction" value="next" id="dir-next" checked>
+                <label class="form-check-label" for="dir-next">
+                    向后翻页
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="direction" value="prev" id="dir-prev">
+                <label class="form-check-label" for="dir-prev">
+                    向前翻页
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" name="isScroll" value="on" id="isScroll" checked>
+                <label class="form-check-label" for="isScroll">
+                    是否滚动页面
+                </label>
+            </div>
+        </div>
+        <div>
+            <span>间隔:</span>
+            <div class="input-group">
+                <input type="number" min="2" class="form-control" placeholder="翻页间隔，单位：秒(默认5秒)" name="interval">
+                <span class="input-group-text">秒</span>
+            </div>
+        </div>
+
+        <div class="d-grid gap-2 d-flex justify-content-between">
+            <button id="start" type="button" class="btn btn-dark flex-grow-1">开始</button>
+            <button id="stop" type="button" class="btn btn-dark flex-grow-1">停止</button>
+        </div>
+    </div>
+</form>
+</body>
+</html>

@@ -1,0 +1,78 @@
+{
+  "manifest_version": 3,
+  "name": "魏如雪",
+  "description": "你可以叫我小雪，我是夏如雯的好朋友",
+  "version": "2.6.7",
+  "permissions": [
+    "declarativeNetRequest",
+    "declarativeNetRequestFeedback",
+    "declarativeContent"
+  ],
+  "host_permissions": [
+    "https://*.weread.qq.com/*",
+    "https://*.file.myqcloud.com/*"
+  ],
+  "declarative_net_request": {
+    "rule_resources": [
+      {
+        "id": "ruleset_1",
+        "enabled": true,
+        "path": "rules/rule.json"
+      }
+    ]
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://*.weread.qq.com/web/reader/*"
+      ],
+      "js": [
+        "lib/crypto-js@4.2.0.min.js",
+        "lib/utils.js",
+        "lib/store.js",
+        "lib/content.js"
+      ],
+      "css": [
+        "toc.css"
+      ],
+      "run_at": "document_start",
+      "world": "ISOLATED",
+      "all_frames": false
+    },
+    {
+      "matches": [
+        "https://*.weread.qq.com/web/reader/*"
+      ],
+      "js": [
+        "scripts/auto.js"
+      ],
+      "run_at": "document_start",
+      "world": "ISOLATED",
+      "all_frames": false
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "lib/xhr-fetch.js"
+      ],
+      "matches": [
+        "<all_urls>"
+      ]
+    },
+    {
+      "resources": [
+        "/overrides/6.21ec78ec.js"
+      ],
+      "matches": [
+        "<all_urls>"
+      ]
+    }
+  ],
+  "action": {
+    "default_popup": "popup.html"
+  },
+  "background": {
+    "service_worker": "background.js"
+  }
+}
