@@ -4,21 +4,26 @@
   "main": "index.js",
   "repository": "git@github.com:ckcock/wrx.git",
   "author": "ckcock",
+  "type": "module",
   "license": "MIT",
   "scripts": {
     "transform": "node transform/index.js",
     "build": "node scripts/build.js"
   },
   "dependencies": {
-    "jscodeshift": "^0.15.1"
+    "@actions/core": "^1.10.1",
+    "@actions/github": "^6.0.0",
+    "axios": "^1.6.5",
+    "jscodeshift": "^0.15.1",
+    "jsdom": "^23.2.0"
   },
   "devDependencies": {
+    "@types/jscodeshift": "^0.11.11",
+    "@types/node": "^20.10.4",
+    "ast-types": "^0.14.2",
     "chrome-types": "^0.1.242",
     "fs-extra": "^11.1.1",
     "rimraf": "^5.0.5",
-    "zip-lib": "^0.7.3",
-    "@types/jscodeshift": "^0.11.11",
-    "@types/node": "^20.10.4",
-    "ast-types": "^0.14.2"
+    "zip-lib": "^0.7.3"
   }
 }

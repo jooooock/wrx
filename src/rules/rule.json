@@ -1,15 +1,1 @@
-[
-  {
-    "id": 1,
-    "priority": 1,
-    "condition": {
-      "urlFilter": "6.0cf1335d.js"
-    },
-    "action": {
-      "type": "redirect",
-      "redirect": {
-        "extensionPath": "/overrides/6.0cf1335d.js"
-      }
-    }
-  }
-]
+[{"id":1,"priority":1,"condition":{"urlFilter":"6.0cf1335d.js"},"action":{"type":"redirect","redirect":{"extensionPath":"/overrides/6.0cf1335d.js"}}},{"id":2,"priority":1,"condition":{"urlFilter":"6.21ec78ec.js"},"action":{"type":"redirect","redirect":{"extensionPath":"/overrides/6.21ec78ec.js"}}}]

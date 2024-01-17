@@ -1,11 +1,9 @@
-let j = require('jscodeshift')
-const path = require('path')
-const fs = require('fs')
+import path from "node:path";
+import jscodeshift from 'jscodeshift'
+import {readFile, writeFile} from './utils.js'
 
 // 需要使用 babylon 解析器
-j = j.withParser('babylon')
-
-const source = fs.readFileSync(path.resolve(__dirname, '6.0cf1335d.js'), {encoding: 'utf-8'})
+const j = jscodeshift.withParser('babylon')
 
 
 /**
@@ -39,8 +37,6 @@ function fixButtonCode(root, btn) {
     })
 }
 
-const root = j(source)
-
 function handle(root) {
     deleteEventProtectMethodBody(root)
     fixButtonCode(root, 'handleClickNextChapterButton')
@@ -49,9 +45,9 @@ function handle(root) {
     fixButtonCode(root, 'handleClickNextSectionButton')
 }
 
-handle(root)
-
-
-// console.log(root.toSource())
-
-fs.writeFileSync(path.resolve(__dirname, 'fix.js'), root.toSource(), {encoding: 'utf-8'})
+export function transform(filepath) {
+    const input = readFile(filepath)
+    const root = j(input)
+    handle(root)
+    return writeFile(`../js/overrides/${path.basename(filepath.toString())}`, root.toSource())
+}

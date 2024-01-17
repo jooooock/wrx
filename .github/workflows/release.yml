@@ -1,0 +1,37 @@
+name: Release
+run-name: ${{ github.actor }} is running Release Actions 🚀
+on: [pull_request]
+jobs:
+  Release-Job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 拉取代码
+        uses: actions/checkout@v4
+
+      - name: 设置 node 环境
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18.x'
+          cache: npm
+
+      - name: 安装依赖
+        run: |
+          npm install -g yarn
+          yarn
+
+      - name: 执行构建
+        id: build
+        run: node ./scripts/index.js
+        continue-on-error: true
+
+      - name: 输出构建结果
+        run: |
+          echo "output: ${{ toJSON(steps.build) }}"
+
+      - name: 提交代码
+        if: ${{ steps.build.outcome == 'success' }}
+        run: |
+          git add .
+          git comm -m "release"
+          git pull
+          git push origin master
