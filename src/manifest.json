@@ -52,8 +52,7 @@
     },
     {
       "resources": [
-        "/overrides/6.0cf1335d.js",
-        "/overrides/6.21ec78ec.js"
+        "/overrides/6.0cf1335d.js"
       ],
       "matches": [
         "<all_urls>"
@@ -66,5 +65,5 @@
   "background": {
     "service_worker": "background.js"
   },
-  "version_name": "2024/1/18 14:03:59"
+  "version_name": "2024/1/18 18:19:28"
 }

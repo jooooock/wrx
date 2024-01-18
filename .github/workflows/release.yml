@@ -22,7 +22,10 @@ jobs:
 
       - name: 执行构建
         id: build
-        run: node ./scripts/index.js
+        run: |
+          node ./scripts/index.js
+          echo "version=$(jq -r .version latest.json)" >> "$GITHUB_OUTPUT"
+          echo "version=$(jq -r .version latest.json)" >> "$GITHUB_ENV"
         continue-on-error: true
 
       - name: 输出构建结果
@@ -35,6 +38,14 @@ jobs:
           git config --global user.name Jock
           git config --global user.email findsource@proton.me
           git add .
-          echo release v$(jq -r .version latest.json) | git commit --file -
+          git commit -m "release v$(echo $version)"
+          git tag v$(echo $version)
           git pull
           git push origin master
+          git push --tags
+
+      - name: 发布 Release
+        uses: ncipollo/release-action@v1
+        with:
+          artifacts: "releases/wrx-v${{ steps.build.outputs.version }}.zip"
+          tag: "v${{ steps.build.outputs.version }}"
