@@ -1,6 +1,6 @@
 name: Release
 run-name: ${{ github.actor }} is running Release Actions 🚀
-on: [workflow_dispatch]
+on: [workflow_dispatch,push]
 jobs:
   release:
     runs-on: ubuntu-latest
@@ -14,8 +14,9 @@ jobs:
           node-version: '18.x'
           cache: npm
 
-      - name: 安装依赖
+      - name: 安装依赖 # jq用于在命令行中解析json
         run: |
+          sudo apt install jq
           npm install -g yarn
           yarn
 
@@ -26,7 +27,7 @@ jobs:
 
       - name: 输出构建结果
         run: |
-          echo "output: ${{ toJSON(steps.build) }}"
+          echo "result: ${{ toJSON(steps.build) }}"
 
       - name: 提交代码
         if: ${{ steps.build.outcome == 'success' }}
@@ -34,6 +35,6 @@ jobs:
           git config --global user.name Jock
           git config --global user.email findsource@proton.me
           git add .
-          git commit -m "release"
+          echo release v$(jq -r .version latest.json) | git commit --file -
           git pull
           git push origin master
