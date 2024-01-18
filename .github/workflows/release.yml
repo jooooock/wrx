@@ -45,6 +45,7 @@ jobs:
           git push --tags
 
       - name: 发布 Release
+        if: ${{ steps.build.outcome == 'success' }}
         uses: ncipollo/release-action@v1
         with:
           artifacts: "releases/wrx-${{ steps.build.outputs.version }}.zip"
