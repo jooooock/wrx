@@ -1,6 +1,6 @@
 name: Release
 run-name: ${{ github.actor }} is running Release Actions 🚀
-on: [pull_request]
+on: [workflow_dispatch]
 jobs:
   Release-Job:
     runs-on: ubuntu-latest
