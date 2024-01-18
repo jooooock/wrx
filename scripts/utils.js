@@ -10,7 +10,7 @@ import {fileURLToPath} from 'node:url'
  * @param url
  * @return {Promise<string>}
  */
-function get(url) {
+export function get(url) {
     return new Promise((resolve, reject) => {
         https.get(url, {
             headers: {
@@ -29,7 +29,10 @@ function get(url) {
                 body += chunk.toString()
             });
             resp.on('end', () => {
-                resolve(body)
+                resolve({
+                    body: body,
+                    headers: resp.headers,
+                })
             })
         })
     })
@@ -39,11 +42,11 @@ export function readFile(relativeFilePath) {
     return fs.readFileSync(new URL(relativeFilePath, import.meta.url), {encoding: 'utf-8'})
 }
 
-export function writeFile(relativeFilePath, content) {
+export function writeFile(relativeFilePath, content, flag = 'w') {
     const target = fileURLToPath(new URL(relativeFilePath, import.meta.url))
     fse.ensureDirSync(path.dirname(target), {})
 
-    fs.writeFileSync(target, content, {encoding: 'utf-8'})
+    fs.writeFileSync(target, content, {encoding: 'utf-8', flag: flag})
     return target
 }
 
@@ -60,7 +63,7 @@ export function writeJson(relativeFilePath, json) {
 
 // 获取最新的js文件地址
 export async function fetchLatestFile() {
-    const html = await get('https://weread.qq.com/web/reader/22a327a0813ab86fbg010c7d')
+    const {body: html} = await get('https://weread.qq.com/web/reader/22a327a0813ab86fbg010c7d')
     const dom = new JSDOM(html)
     const scripts = dom.window.document.querySelectorAll('script')
     if (scripts.length <= 0) {
@@ -70,7 +73,9 @@ export async function fetchLatestFile() {
 }
 
 export async function downloadFile(url) {
-    const content = await get(url)
+    const {body: content, headers} = await get(url)
+    const info = `url: ${url}\nlast-modified: ${headers["last-modified"]}\netag: ${headers['etag']}\n\n`
+    writeFile('../history.txt', info, 'as')
     return writeFile(`../js/raw/${path.basename(url)}`, content)
 }
 
