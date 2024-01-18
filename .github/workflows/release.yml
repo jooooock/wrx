@@ -2,7 +2,7 @@ name: Release
 run-name: ${{ github.actor }} is running Release Actions 🚀
 on: [workflow_dispatch]
 jobs:
-  Release-Job:
+  release:
     runs-on: ubuntu-latest
     steps:
       - name: 拉取代码
@@ -31,6 +31,8 @@ jobs:
       - name: 提交代码
         if: ${{ steps.build.outcome == 'success' }}
         run: |
+          git config --global user.name Jock
+          git config --global user.email findsource@proton.me
           git add .
           git commit -m "release"
           git pull
