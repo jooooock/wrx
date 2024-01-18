@@ -1,6 +1,11 @@
 name: Release
 run-name: ${{ github.actor }} is running Release Actions 🚀
-on: [workflow_dispatch,push]
+
+on:
+  schedule:
+    - cron: "0 * * * *"
+  push:
+
 jobs:
   release:
     runs-on: ubuntu-latest
