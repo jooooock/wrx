@@ -32,6 +32,6 @@ jobs:
         if: ${{ steps.build.outcome == 'success' }}
         run: |
           git add .
-          git comm -m "release"
+          git commit -m "release"
           git pull
           git push origin master
