@@ -6,3 +6,7 @@ url: https://weread-1258476243.file.myqcloud.com/web/wrwebnjlogic/js/6.dd196dae.
 last-modified: Tue, 23 Jan 2024 04:12:11 GMT
 etag: "0064c56c63bec431c2f8ddc1a7badc55"
 
+url: https://weread-1258476243.file.myqcloud.com/web/wrwebnjlogic/js/6.9a7afd68.js
+last-modified: Thu, 29 Feb 2024 07:27:01 GMT
+etag: "5c85e2b7d6bafadb856956ea96035a95"
+
