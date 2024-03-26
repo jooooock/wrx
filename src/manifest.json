@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "魏如雪",
   "description": "你可以叫我小雪，我是夏如雯的好朋友",
-  "version": "0.0.0.6",
+  "version": "0.0.0.7",
   "permissions": [
     "declarativeNetRequest",
     "declarativeNetRequestFeedback",
@@ -56,6 +56,7 @@
         "/overrides/6.0cf1335d.js",
         "/overrides/6.0f8531aa.js",
         "/overrides/6.86c67fdd.js",
+        "/overrides/6.977228d7.js",
         "/overrides/6.9a7afd68.js",
         "/overrides/6.dd196dae.js"
       ],
@@ -70,5 +71,5 @@
   "background": {
     "service_worker": "background.js"
   },
-  "version_name": "2024/3/21 22:16:31"
+  "version_name": "2024/3/26 17:17:56"
 }
