@@ -74,3 +74,7 @@ url: https://weread-1258476243.file.myqcloud.com/web/wrwebnjlogic/js/7.f554b531.
 last-modified: Mon, 20 May 2024 12:07:55 GMT
 etag: "c25c033bf573faa67019ef3a459a7de1"
 
+url: https://weread-1258476243.file.myqcloud.com/web/wrwebnjlogic/js/7.8c1ddae9.js
+last-modified: Tue, 21 May 2024 02:58:27 GMT
+etag: "8a7e5e00c7334ea7e63fffe4901c57a0"
+
