@@ -1,5 +1,5 @@
 {
-  "version": "0.0.2.6",
+  "version": "0.0.2.7",
   "overrides": [
     "6.014ecba2.js",
     "6.0cf1335d.js",
@@ -10,6 +10,7 @@
     "6.9a7afd68.js",
     "6.dd196dae.js",
     "7.20b30d46.js",
+    "7.24acd39e.js",
     "7.2fb98ce9.js",
     "7.3b8878b8.js",
     "7.79c38430.js",
@@ -28,5 +29,5 @@
     "7.f6ac3b8d.js",
     "7.fab7d9dc.js"
   ],
-  "version_name": "2024/6/10 10:19:25"
+  "version_name": "2024/6/19 17:07:22"
 }
