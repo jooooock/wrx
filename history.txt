@@ -150,3 +150,7 @@ url: https://weread-1258476243.file.myqcloud.com/web/wrwebnjlogic/js/7.3da2de76.
 last-modified: Wed, 24 Jul 2024 13:38:25 GMT
 etag: "079e5247e220eefbd485562aea86bb4d"
 
+url: https://weread-1258476243.file.myqcloud.com/web/wrwebnjlogic/js/7.da762a26.js
+last-modified: Fri, 26 Jul 2024 09:58:40 GMT
+etag: "e6525796dbf66466ccfe9cbb01723ea9"
+
