@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "魏如雪",
   "description": "你可以叫我小雪，我是夏如雯的好朋友",
-  "version": "0.0.4.0",
+  "version": "0.0.4.1",
   "permissions": [
     "declarativeNetRequest",
     "declarativeNetRequestFeedback",
@@ -104,5 +104,5 @@
   "background": {
     "service_worker": "background.js"
   },
-  "version_name": "2024/7/26 23:21:11"
+  "version_name": "2024/7/29 10:25:53"
 }
