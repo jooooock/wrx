@@ -28,10 +28,12 @@ function deleteEventProtectMethodBody(root) {
 function fixButtonCode(root, btn) {
     findMethod(root, btn).forEach(path => {
         const statements = path.get('body', 'body').value
-        if (statements.length === 1 && j.ExpressionStatement.check(statements[0])) {
-            const expression = statements[0].expression
-            if (j.LogicalExpression.check(expression) && j.CallExpression.check(expression.right)) {
-                statements[0].expression = expression.right
+        for (const statement of statements) {
+            if (j.ExpressionStatement.check(statement)) {
+                const expression = statement.expression
+                if (j.LogicalExpression.check(expression) && j.CallExpression.check(expression.right)) {
+                    statement.expression = expression.right
+                }
             }
         }
     })
