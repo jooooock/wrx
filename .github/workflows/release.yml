@@ -4,7 +4,6 @@ run-name: ${{ github.actor }} is running Release Actions 🚀
 on:
   schedule:
     - cron: "0 * * * *"
-  push:
 
 jobs:
   release:
