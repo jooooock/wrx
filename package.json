@@ -2,8 +2,8 @@
   "name": "wrx",
   "version": "1.0.0",
   "main": "index.js",
-  "repository": "git@github.com:ckcock/wrx.git",
-  "author": "ckcock",
+  "repository": "git@github.com:jooooock/wrx.git",
+  "author": "jooooock",
   "type": "module",
   "license": "MIT",
   "scripts": {

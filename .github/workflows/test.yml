@@ -1,0 +1,19 @@
+name: test actions
+
+on:
+  push:
+    branches:
+      - master
+
+
+jobs:
+  test:
+    name: 测试 Actions
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 检查环境
+        run: |
+          node -v
+          yarn -v
+          jq --version
