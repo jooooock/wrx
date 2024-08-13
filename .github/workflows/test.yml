@@ -17,3 +17,4 @@ jobs:
           node -v
           yarn -v
           jq --version
+          echo "github: ${{ toJSON(github) }}"
