@@ -39,7 +39,7 @@ jobs:
         run: |
           node ./scripts/weread/check-update.js
           node ./scripts/weread/patch.js
-          node ./script/weread/build.js
+          node ./scripts/weread/build.js
           echo "version=v$(jq -r .version latest.json)" >> "$GITHUB_OUTPUT"
           echo "version=v$(jq -r .version latest.json)" >> "$GITHUB_ENV"
 
