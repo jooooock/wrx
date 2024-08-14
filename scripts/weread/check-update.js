@@ -1,3 +1,4 @@
+import path from "node:path";
 import {JSDOM} from "jsdom";
 import {get, readJson, writeFile} from "../utils.js";
 
@@ -19,7 +20,7 @@ async function hasNewVersion() {
     console.log('[微信读书]: 最新的js文件url: ', coreJSURL)
 
     const latest = readJson('../latest.json')
-    return [!latest.weread.includes(coreJSURL), coreJSURL]
+    return [!latest.weread.includes(path.basename(coreJSURL)), coreJSURL]
 }
 
 ;(async () => {
