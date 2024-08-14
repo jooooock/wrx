@@ -1,6 +1,5 @@
-import path from "node:path";
 import jscodeshift from 'jscodeshift'
-import {readFile, writeFile} from './utils.js'
+
 
 // 需要使用 babylon 解析器
 const j = jscodeshift.withParser('babylon')
@@ -47,9 +46,8 @@ function handle(root) {
     fixButtonCode(root, 'handleClickNextSectionButton')
 }
 
-export function transform(filepath) {
-    const input = readFile(filepath)
+export function transform(input) {
     const root = j(input)
     handle(root)
-    return writeFile(`../js/overrides/${path.basename(filepath.toString())}`, root.toSource())
+    return root.toSource()
 }

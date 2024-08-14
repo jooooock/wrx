@@ -8,6 +8,7 @@ on:
 
 jobs:
   check-update:
+    name: 检查微信读书核心js是否有更新
     if: github.repository == 'jooooock/wrx'
     runs-on: ubuntu-latest
 
@@ -19,4 +20,20 @@ jobs:
         run: yarn
 
       - name: 检查微信读书是否更新
-        run: node ./scripts/weread.js
+        run: node ./scripts/weread/check-update.js
+
+  patch-js:
+    name: 对核心js打补丁
+    needs: check-update
+    runs-on: ubuntu-latest
+
+    steps:
+      - run: node ./scripts/weread/patch.js
+
+  build:
+    name: 打包发布
+    needs: patch-js
+    runs-on: ubuntu-latest
+
+    steps:
+      - run: node ./script/weread/build.js
