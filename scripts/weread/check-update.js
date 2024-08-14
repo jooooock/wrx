@@ -27,7 +27,7 @@ async function hasNewVersion() {
     const [needUpgrade, url] = await hasNewVersion()
     if (!needUpgrade) {
         console.log('[微信读书]: js文件无变化')
-        process.exit(1)
+        process.exit(0)
     }
 
     // 目标url写入临时文件
