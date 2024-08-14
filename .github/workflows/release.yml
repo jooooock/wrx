@@ -12,6 +12,8 @@ jobs:
     name: 检查微信读书核心js是否有更新
     if: github.repository == 'jooooock/wrx'
     runs-on: ubuntu-latest
+    outputs:
+      needUpgrade: ${{ steps.step3.outputs.exists }}
 
     steps:
       - name: 拉取代码
@@ -21,12 +23,16 @@ jobs:
         run: yarn
 
       - name: 检查微信读书是否更新
-        run: node ./scripts/weread/check-update.js
+        id: step3
+        run: |
+          node ./scripts/weread/check-update.js
+          test -e ./scripts/weread/tmp/url && echo "exists=true" >> "$GITHUB_OUTPUT" || echo "exists=false" >> "$GITHUB_OUTPUT"
 
   build:
     name: 打包发布
     needs: check-update
     runs-on: ubuntu-latest
+    if: needs.check-update.outputs.needUpgrade == 'true'
 
     steps:
       - name: 拉取代码
