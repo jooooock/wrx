@@ -31,7 +31,7 @@ jobs:
     name: 打包发布
     needs: check-update
     runs-on: ubuntu-latest
-    if: needs.check-update.outputs.needUpgrade == false
+    if: needs.check-update.outputs.needUpgrade == 'false'
 
     steps:
       - name: 打印job结果
