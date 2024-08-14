@@ -105,3 +105,30 @@ interface StoreObjectValue {
   date: 1723566852598,
 }
 ```
+
+## 添加新的网站支持需要做的事情
+
+### 缓存数据
+
+修改`src/manifest.json`文件中的`host_permissions`，包含目标网站及接口域名。
+
+修改`src/common/xhr-fetch.js`文件中的`INTERCEPT_APIS`，增加目标网站的数据接口拦截规则。
+
+在`src`目录下新建对应网站的目录，比如叫`weread`，来存放需要注入到该网站的脚本与样式。
+
+该目录中需要包含以下这些文件:
+
+#### 1. content.js 
+该文件负责在页面上添加【导出本书数据】按钮，同时需要监听`message`事件来保存接口数据
+
+#### 2. store.js
+创建`wrx`数据库，并提供数据存储与导出相关功能，供`content.js`文件使用
+
+#### 3. toc.css
+在书籍的目录上添加标记，方便查看哪些章节已下载，哪些章节未下载。
+
+#### 4. 其他一些工具函数
+
+最后，在`src/manifest.json`文件的`content_scripts`中注入这些资源。
+
+### 自动翻页

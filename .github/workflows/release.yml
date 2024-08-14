@@ -10,8 +10,8 @@ on:
 jobs:
   check-update:
     name: 检查微信读书核心js是否有更新
-    if: github.repository == 'jooooock/wrx'
     runs-on: ubuntu-latest
+    if: github.repository == 'jooooock/wrx'
     outputs:
       needUpgrade: ${{ steps.step3.outputs.exists }}
 
@@ -30,8 +30,8 @@ jobs:
 
   build:
     name: 打包发布
-    needs: check-update
     runs-on: ubuntu-latest
+    needs: check-update
     if: needs.check-update.outputs.needUpgrade == 'true'
 
     steps:

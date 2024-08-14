@@ -10,7 +10,8 @@
   ],
   "host_permissions": [
     "https://*.weread.qq.com/*",
-    "https://*.file.myqcloud.com/*"
+    "https://*.file.myqcloud.com/*",
+    "https://www.zhihu.com/*"
   ],
   "declarative_net_request": {
     "rule_resources": [
@@ -37,6 +38,19 @@
       ],
       "css": [
         "weread/toc.css"
+      ],
+      "run_at": "document_start",
+      "world": "ISOLATED",
+      "all_frames": false
+    },
+    {
+      "matches": [
+        "https://www.zhihu.com/pub/reader/*"
+      ],
+      "js": [
+        "common/inject.js",
+        "common/utils.js",
+        "sites/zhihu/content.js"
       ],
       "run_at": "document_start",
       "world": "ISOLATED",
