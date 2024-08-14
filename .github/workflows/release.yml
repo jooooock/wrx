@@ -1,43 +1,50 @@
 name: Release
-run-name: ${{ github.actor }} is running Release Actions 🚀
 
 on:
   schedule:
     - cron: "0 * * * *"
 
 jobs:
-  release:
+  check-update:
+    name: 检查微信读书核心js是否有更新
+    if: github.repository == 'jooooock/wrx'
     runs-on: ubuntu-latest
+
     steps:
       - name: 拉取代码
         uses: actions/checkout@v4
 
-      - name: 设置 node 环境
-        uses: actions/setup-node@v3
-        with:
-          node-version: '18.x'
-          cache: npm
+      - name: 安装依赖
+        run: yarn
 
-      - name: 安装依赖 # jq用于在命令行中解析json
-        run: |
-          sudo apt install jq
-          npm install -g yarn
-          yarn
+      - name: 检查微信读书是否更新
+        run: node ./scripts/weread/check-update.js
+
+  build:
+    name: 打包发布
+    needs: check-update
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 拉取代码
+        uses: actions/checkout@v4
+
+      - name: 安装依赖
+        run: yarn
 
       - name: 执行构建
         id: build
         run: |
-          node ./scripts/index.js
+          node ./scripts/weread/check-update.js
+          node ./scripts/weread/patch.js
+          node ./scripts/weread/build.js
           echo "version=v$(jq -r .version latest.json)" >> "$GITHUB_OUTPUT"
-          echo "version=v$(jq -r .version latest.json)" >> "$GITHUB_ENV"
-        continue-on-error: true
 
       - name: 输出构建结果
         run: |
-          echo "result: ${{ toJSON(steps.build) }}"
+          echo "build result: ${{ toJSON(steps.build.outputs) }}"
 
       - name: 提交代码
-        if: ${{ steps.build.outcome == 'success' }}
         run: |
           git config --global user.name Jock
           git config --global user.email findsource@proton.me
@@ -49,7 +56,6 @@ jobs:
           git push --tags
 
       - name: 发布 Release
-        if: ${{ steps.build.outcome == 'success' }}
         uses: ncipollo/release-action@v1
         with:
           artifacts: "releases/wrx-${{ steps.build.outputs.version }}.zip"
