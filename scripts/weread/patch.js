@@ -29,7 +29,7 @@ function replaceProjectFile(url) {
     // 将最新的补丁文件拷贝到 overrides 目录
     const latestJs = new URL(`./tmp/${path.basename(url)}`, import.meta.url)
     const dest = new URL('../../src/overrides/weread', import.meta.url)
-    fse.copySync(fileURLToPath(latestJs), fileURLToPath(dest), {overwrite: true})
+    fse.copySync(fileURLToPath(latestJs), fileURLToPath(new URL(`../../src/overrides/weread/${path.basename(url)}`, import.meta.url)))
 
     // 基于最新的 overrides 目录生成规则文件
     const files = fs.readdirSync(fileURLToPath(dest))
