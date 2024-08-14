@@ -23,7 +23,7 @@ jobs:
         run: node ./scripts/weread/check-update.js
 
   patch-js:
-    name: 对核心js打补丁
+    name: 对核心js打补丁并替换插件目录的overrides
     needs: check-update
     runs-on: ubuntu-latest
 
@@ -36,4 +36,13 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - run: node ./script/weread/build.js
+      - name: 执行构建
+        id: build
+        run: |
+          node ./script/weread/build.js
+          echo "version=v$(jq -r .version latest.json)" >> "$GITHUB_OUTPUT"
+          echo "version=v$(jq -r .version latest.json)" >> "$GITHUB_ENV"
+
+      - name: 输出构建结果
+        run: |
+          echo "result: ${{ toJSON(steps.build) }}"
