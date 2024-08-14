@@ -12,7 +12,8 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - names: 拉取代码
+      - name: 拉取代码
         uses: actions/checkout@v4
 
-      - run: node ./scripts/weread.js
+      - name: 检查微信读书是否更新
+        run: node ./scripts/weread.js
