@@ -3,6 +3,9 @@ name: Release
 on:
   schedule:
     - cron: "0 * * * *"
+  push:
+    branches:
+      - master
 
 jobs:
   check-update:
