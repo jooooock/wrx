@@ -1,4 +1,4 @@
-name: test actions
+name: 测试 Actions
 
 on:
   push:
@@ -7,8 +7,15 @@ on:
 
 
 jobs:
+  check-update:
+    if: github.repository == 'jooooock/wrx'
+    runs-on: ubuntu-latest
+
+    steps:
+      - run: node ./scripts/weread.js
+
   test:
-    name: 测试 Actions
+    if: github.repository == 'jooooock/wrx'
     runs-on: ubuntu-latest
 
     steps:

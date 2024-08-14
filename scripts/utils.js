@@ -4,6 +4,8 @@ import fs from 'node:fs'
 import path from 'node:path'
 import fse from 'fs-extra'
 import {fileURLToPath} from 'node:url'
+import dayjs from 'dayjs'
+
 
 /**
  * GET 拉取文件内容
@@ -144,14 +146,13 @@ export function incrementVersion(version) {
     return parts.reverse().join('.')
 }
 
+/**
+ * 更新 latest.json 文件中的 version_name 字段
+ */
 export function setupBuildTime() {
-    const date = new Intl.DateTimeFormat("zh-CN", {
-        dateStyle: "short",
-        timeStyle: "medium",
-        timeZone: "Asia/Shanghai",
-    }).format(new Date());
+    const now = dayjs().format('YYYY-MM-DD HH:mm:ss')
     const latest = readJson('../latest.json')
-    latest.version_name = date
+    latest.version_name = now
     writeJson('../latest.json', latest)
 }
 
