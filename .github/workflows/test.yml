@@ -26,7 +26,7 @@ jobs:
         run: | 
           node ./scripts/weread/check-update.js
           test -e ./scripts/weread/tmp/url && echo "exists=true" >> "$GITHUB_OUTPUT" || echo "exists=false" >> "$GITHUB_OUTPUT"
-          echo ${{ steps.step3.outputs }}
+          echo "${{ steps.step3.outputs }}"
 
   build:
     name: 打包发布
