@@ -41,8 +41,24 @@ jobs:
           node ./scripts/weread/patch.js
           node ./scripts/weread/build.js
           echo "version=v$(jq -r .version latest.json)" >> "$GITHUB_OUTPUT"
-          echo "version=v$(jq -r .version latest.json)" >> "$GITHUB_ENV"
 
       - name: 输出构建结果
         run: |
-          echo "result: ${{ toJSON(steps.build) }}"
+          echo "build result: ${{ toJSON(steps.build.outputs) }}"
+
+      - name: 提交代码
+        run: |
+          git config --global user.name Jock
+          git config --global user.email findsource@proton.me
+          git add .
+          git commit -m "release $(echo $version)"
+          git tag $(echo $version)
+          git pull
+          git push origin dev
+          git push --tags
+
+      - name: 发布 Release
+        uses: ncipollo/release-action@v1
+        with:
+          artifacts: "releases/wrx-${{ steps.build.outputs.version }}.zip"
+          tag: "${{ steps.build.outputs.version }}"
