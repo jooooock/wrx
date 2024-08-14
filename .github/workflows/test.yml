@@ -15,5 +15,8 @@ jobs:
       - name: 拉取代码
         uses: actions/checkout@v4
 
+      - name: 安装依赖
+        run: yarn
+
       - name: 检查微信读书是否更新
         run: node ./scripts/weread.js
