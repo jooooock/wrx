@@ -3,7 +3,7 @@ name: 测试 Actions
 on:
   push:
     branches:
-      - master
+      - dev
 
 
 jobs:
@@ -12,16 +12,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - names: 拉取代码
+        uses: actions/checkout@v4
+
       - run: node ./scripts/weread.js
-
-  test:
-    if: github.repository == 'jooooock/wrx'
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: 检查环境
-        run: |
-          node -v
-          yarn -v
-          jq --version
-          echo "github: ${{ toJSON(github) }}"

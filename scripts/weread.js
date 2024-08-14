@@ -41,6 +41,7 @@ async function patchFile(url) {
         console.log('[微信读书]: js文件无变化')
         process.exit(1)
     }
+    console.log(url)
 
-    await patchFile(url)
+    // await patchFile(url)
 })();
