@@ -1,6 +1,6 @@
 import path from "node:path";
 import {get, incrementVersion, readFile, readJson, writeFile} from "../utils.js";
-import {transform} from "../transformer.js";
+import {transform} from "./transformer.js";
 import fse from "fs-extra";
 import {fileURLToPath} from "node:url";
 import fs from "node:fs";

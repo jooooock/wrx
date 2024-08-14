@@ -22,23 +22,23 @@ jobs:
       - name: 检查微信读书是否更新
         run: node ./scripts/weread/check-update.js
 
-  patch-js:
-    name: 对核心js打补丁并替换插件目录的overrides
+  build:
+    name: 打包发布
     needs: check-update
     runs-on: ubuntu-latest
 
     steps:
-      - run: node ./scripts/weread/patch.js
+      - name: 拉取代码
+        uses: actions/checkout@v4
 
-  build:
-    name: 打包发布
-    needs: patch-js
-    runs-on: ubuntu-latest
+      - name: 安装依赖
+        run: yarn
 
-    steps:
       - name: 执行构建
         id: build
         run: |
+          node ./scripts/weread/check-update.js
+          node ./scripts/weread/patch.js
           node ./script/weread/build.js
           echo "version=v$(jq -r .version latest.json)" >> "$GITHUB_OUTPUT"
           echo "version=v$(jq -r .version latest.json)" >> "$GITHUB_ENV"

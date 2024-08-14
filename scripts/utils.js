@@ -1,10 +1,8 @@
 import https from 'node:https'
-import {JSDOM} from 'jsdom'
 import fs from 'node:fs'
 import path from 'node:path'
 import fse from 'fs-extra'
 import {fileURLToPath} from 'node:url'
-import dayjs from 'dayjs'
 
 
 /**
@@ -62,28 +60,6 @@ export function writeJson(relativeFilePath, json) {
     return target
 }
 
-// 获取最新的js文件地址
-export async function fetchLatestFile() {
-    const {body: html} = await get('https://weread.qq.com/web/reader/22a327a0813ab86fbg010c7d')
-    const dom = new JSDOM(html)
-    const scripts = dom.window.document.querySelectorAll('script')
-    if (scripts.length <= 0) {
-        throw new Error('拉取的html中没有发现script元素')
-    }
-    return scripts[scripts.length - 1].attributes.getNamedItem('src').value
-}
-
-export async function downloadFile(url) {
-    const {body: content, headers} = await get(url)
-    const info = `url: ${url}\nlast-modified: ${headers["last-modified"]}\netag: ${headers['etag']}\n\n`
-    writeFile('../history.txt', info, 'as')
-    return writeFile(`../js/raw/${path.basename(url)}`, content)
-}
-
-export function checkFileIsUpdated(url) {
-    const latest = readJson('../latest.json')
-    return !latest.overrides.includes(path.basename(url))
-}
 
 export function sleep(duration) {
     return new Promise(resolve => {
@@ -91,38 +67,6 @@ export function sleep(duration) {
     })
 }
 
-export function replaceProjectFile() {
-    // 覆盖 overrides 目录
-    const src = new URL('../js/overrides', import.meta.url)
-    const dest = new URL('../src/overrides', import.meta.url)
-    fse.copySync(fileURLToPath(src), fileURLToPath(dest), {overwrite: true})
-
-    // 重新生成 rule.json
-    const files = fs.readdirSync(fileURLToPath(src))
-    let counter = 1
-    const ruleJson = files.map(filename => ({
-        "id": counter++,
-        "priority": 1,
-        "condition": {
-            "urlFilter": filename
-        },
-        "action": {
-            "type": "redirect",
-            "redirect": {
-                "extensionPath": "/overrides/" + filename
-            }
-        }
-    }))
-    writeFile('../src/rules/rule.json', JSON.stringify(ruleJson))
-
-    // 更新 manifest.json
-    const latest = readJson('../latest.json')
-    const manifest = JSON.parse(readFile('../src/manifest.json'))
-    manifest.version = incrementVersion(latest.version)
-    manifest.version_name = latest.version_name
-    manifest["web_accessible_resources"][1]["resources"] = files.map(filename => `/overrides/${filename}`)
-    writeFile('../src/manifest.json', JSON.stringify(manifest, null, 2))
-}
 
 /**
  * 递增版本号
@@ -144,25 +88,4 @@ export function incrementVersion(version) {
         i--
     }
     return parts.reverse().join('.')
-}
-
-/**
- * 更新 latest.json 文件中的 version_name 字段
- */
-export function setupBuildTime() {
-    const now = dayjs().format('YYYY-MM-DD HH:mm:ss')
-    const latest = readJson('../latest.json')
-    latest.version_name = now
-    writeJson('../latest.json', latest)
-}
-
-export function updateLatest() {
-    const src = new URL('../js/overrides', import.meta.url)
-    const files = fs.readdirSync(fileURLToPath(src))
-
-    const latest = readJson('../latest.json')
-    latest.version = incrementVersion(latest.version)
-    latest.overrides = files
-
-    writeJson('../latest.json', latest)
 }
