@@ -50,7 +50,12 @@
       "js": [
         "common/inject.js",
         "common/utils.js",
-        "sites/zhihu/content.js"
+        "sites/zhihu/store.js",
+        "sites/zhihu/content.js",
+        "sites/zhihu/auto.js"
+      ],
+      "css": [
+        "sites/zhihu/toc.css"
       ],
       "run_at": "document_start",
       "world": "ISOLATED",

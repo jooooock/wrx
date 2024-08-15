@@ -108,6 +108,10 @@ interface StoreObjectValue {
 
 ## 添加新的网站支持需要做的事情
 
+### 图标切换与启用/禁用
+
+修改`src/background.js`，增加相应的规则及判断条件。
+
 ### 缓存数据
 
 修改`src/manifest.json`文件中的`host_permissions`字段，将目标网站及接口的域名包含进来。
@@ -133,3 +137,4 @@ interface StoreObjectValue {
 最后，在`src/manifest.json`文件的`content_scripts`中注入这些资源。
 
 ### 自动翻页
+在对应网站目录下新建`auto.js`，这个脚本会被注入到目标页面中，负责接收`popup`发送过来的事件，并执行按钮点击动作。

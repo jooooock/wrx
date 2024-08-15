@@ -19,6 +19,7 @@ chrome.runtime.onInstalled.addListener(async () => {
                 })
             ],
             actions: [
+                // 启用插件
                 new chrome.declarativeContent.ShowAction(),
             ],
         };
@@ -48,6 +49,7 @@ chrome.runtime.onMessage.addListener(async (data) => {
     }
 });
 
+// 更换插件图标
 async function handleIconChange(tab) {
     const {url} = tab
 
