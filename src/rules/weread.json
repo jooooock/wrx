@@ -3,6 +3,45 @@
     "id": 1,
     "priority": 1,
     "condition": {
+      "urlFilter": "7.5853f5ce.js"
+    },
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/overrides/weread/7.5853f5ce.js"
+      }
+    }
+  },
+  {
+    "id": 2,
+    "priority": 1,
+    "condition": {
+      "urlFilter": "7.8e1d03c5.js"
+    },
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/overrides/weread/7.8e1d03c5.js"
+      }
+    }
+  },
+  {
+    "id": 3,
+    "priority": 1,
+    "condition": {
+      "urlFilter": "7.cfe384e5.js"
+    },
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/overrides/weread/7.cfe384e5.js"
+      }
+    }
+  },
+  {
+    "id": 4,
+    "priority": 1,
+    "condition": {
       "urlFilter": "7.f8cd399c.js"
     },
     "action": {

@@ -185,3 +185,15 @@ url: https://weread-1258476243.file.myqcloud.com/web/wrwebnjlogic/js/7.f8cd399c.
 last-modified: Tue, 13 Aug 2024 06:57:46 GMT
 etag: "efa857e06f31b7b8c94a91e28b8b0696"
 
+url: https://weread-1258476243.file.myqcloud.com/web/wrwebnjlogic/js/7.5853f5ce.js
+last-modified: Thu, 15 Aug 2024 03:46:31 GMT
+etag: "bea18d09d6ec3c95c0ed50e32579d114"
+
+url: https://weread-1258476243.file.myqcloud.com/web/wrwebnjlogic/js/7.cfe384e5.js
+last-modified: Thu, 15 Aug 2024 04:58:12 GMT
+etag: "e3bfa60acdc5224250489eebd322b7aa"
+
+url: https://weread-1258476243.file.myqcloud.com/web/wrwebnjlogic/js/7.8e1d03c5.js
+last-modified: Thu, 15 Aug 2024 07:11:02 GMT
+etag: "559ed8943609196fc9aef6a2f41ddef2"
+
