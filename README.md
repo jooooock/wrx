@@ -10,7 +10,7 @@
 ## 支持的电子书平台
 
 - [微信读书](https://weread.qq.com/)
-
+- [知乎书店](https://www.zhihu.com/pub) 进度可以查看[接入知乎](docs/sites/zhihu.md)
 
 > [!WARNING]
 > 根据部分用户的反馈，在微信读书平台使用该插件有封号风险，请酌情使用。如果有小号的，尽量用小号使用该插件。  
