@@ -6,6 +6,12 @@ import {fileURLToPath} from "node:url";
 import fs from "node:fs";
 
 
+process.on('uncaughtException', (error) => {
+    console.log(error)
+    // if (error.code !== 'ECONNRESET') {
+    // }
+})
+
 async function patchFile(url) {
     const {body: content, headers} = await get(url)
     const info = `url: ${url}\nlast-modified: ${headers["last-modified"]}\netag: ${headers['etag']}\n\n`

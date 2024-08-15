@@ -2,6 +2,11 @@ import path from "node:path";
 import {JSDOM} from "jsdom";
 import {get, readJson, writeFile} from "../utils.js";
 
+process.on('uncaughtException', (error) => {
+    console.log(error)
+    // if (error.code !== 'ECONNRESET') {
+    // }
+})
 
 /**
  * 检测微信读书是否有更新
