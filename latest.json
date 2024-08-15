@@ -1,10 +1,11 @@
 {
-  "version": "0.0.5.0",
+  "version": "0.0.5.1",
   "weread": [
+    "7.8e1d03c5.js",
     "7.cfe384e5.js",
     "7.5853f5ce.js",
     "7.f8cd399c.js",
     "7.f8cd399c.js"
   ],
-  "build_time": "2024-08-15 05:20:18"
+  "build_time": "2024-08-15 08:25:27"
 }
