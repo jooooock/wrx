@@ -110,16 +110,17 @@ interface StoreObjectValue {
 
 ### 缓存数据
 
-修改`src/manifest.json`文件中的`host_permissions`，包含目标网站及接口域名。
+修改`src/manifest.json`文件中的`host_permissions`字段，将目标网站及接口的域名包含进来。
 
 修改`src/common/xhr-fetch.js`文件中的`INTERCEPT_APIS`，增加目标网站的数据接口拦截规则。
+该规则可以是字符串，也可以是正则表达式，都将匹配接口的`origin + pathname`。
 
-在`src`目录下新建对应网站的目录，比如叫`weread`，来存放需要注入到该网站的脚本与样式。
+在`src/sites`目录下新建对应网站的目录，比如叫`weread`，来存放需要注入到该网站的脚本与样式文件。
 
 该目录中需要包含以下这些文件:
 
 #### 1. content.js 
-该文件负责在页面上添加【导出本书数据】按钮，同时需要监听`message`事件来保存接口数据
+该文件负责在页面上添加【导出本书数据】按钮，同时需要接收`xhr-fetch`发送过来的接口数据(通过`message`事件)。
 
 #### 2. store.js
 创建`wrx`数据库，并提供数据存储与导出相关功能，供`content.js`文件使用

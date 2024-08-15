@@ -19,12 +19,17 @@
         /^https:\/\/www\.zhihu\.com\/api\/v3\/books\/[a-z0-9]+\/chapters\/[a-z0-9]+\/download$/i, //章节数据
     ]
 
+    // send to content script
     function emit(url, request, response) {
+        // if a big media file, can createObjectURL before send to a content script
+        //window.postMessage({ response: URL.createObjectURL(response) }, '*');
         window.postMessage({
             from: 'wrx',
             site: url.origin,
             api: url.pathname,
+            pathname: url.pathname,
             search: url.search,
+            url: url.href,
             request: request,
             response: response,
         }, '*');
@@ -50,7 +55,7 @@
                 // 判断是否命中拦截规则
                 const hitRule = INTERCEPT_APIS.some(rule => {
                     if (typeof rule === 'string') {
-                        return rule.includes(endpoint)
+                        return rule === endpoint
                     } else if (rule instanceof RegExp) {
                         return rule.test(endpoint)
                     } else {
@@ -71,16 +76,25 @@
         const response = await origFetch(...args);
         response
             .clone()
-            .text() // maybe json(), text(), blob()
+            .text() // maybe json(), text(), blob(),因为通常电子书接口数据都是文本格式，所以我们用text()
             .then(data => {
-                const [_url, options] = args
+                let _url
+                let request
+                const [resource, options] = args
+                if (resource instanceof Request) {
+                    _url = resource.url
+                    request = options || resource
+                } else {
+                    _url = resource.toString()
+                    request = options
+                }
                 const url = new URL(_url, window.location.origin)
                 const endpoint = url.origin + url.pathname
 
                 // 判断是否命中拦截规则
                 const hitRule = INTERCEPT_APIS.some(rule => {
                     if (typeof rule === 'string') {
-                        return rule.includes(endpoint)
+                        return rule === endpoint
                     } else if (rule instanceof RegExp) {
                         return rule.test(endpoint)
                     } else {
@@ -88,10 +102,8 @@
                     }
                 })
                 if (hitRule) {
-                    emit(url, options, data)
+                    emit(url, request, data)
                 }
-                // window.postMessage({type: 'fetch', data: data}, '*'); // send to content script
-                //window.postMessage({ type: 'fetch', data: URL.createObjectURL(data) }, '*'); // if a big media file, can createObjectURL before send to a content script
             })
             .catch(err => console.error(err));
         return response;

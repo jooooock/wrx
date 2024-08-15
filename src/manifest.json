@@ -30,14 +30,14 @@
       "js": [
         "common/inject.js",
         "common/utils.js",
-        "weread/crypto-js@4.2.0.min.js",
-        "weread/utils.js",
-        "weread/store.js",
-        "weread/content.js",
-        "weread/auto.js"
+        "sites/weread/crypto-js@4.2.0.min.js",
+        "sites/weread/utils.js",
+        "sites/weread/store.js",
+        "sites/weread/content.js",
+        "sites/weread/auto.js"
       ],
       "css": [
-        "weread/toc.css"
+        "sites/weread/toc.css"
       ],
       "run_at": "document_start",
       "world": "ISOLATED",
@@ -76,7 +76,8 @@
     }
   ],
   "action": {
-    "default_popup": "popup.html"
+    "default_popup": "popup.html",
+    "default_icon": "assets/ebook-disabled.png"
   },
   "background": {
     "service_worker": "background.js"

@@ -49,8 +49,8 @@
     async function handleWereadSite(data) {
         let bookId
 
-        const {api, search, request, response} = data
-        switch (api) {
+        const {pathname, search, request, response} = data
+        switch (pathname) {
             case '/web/book/chapter/e_0':
             case '/web/book/chapter/e_1':
             case '/web/book/chapter/e_2':
@@ -59,7 +59,7 @@
             case '/web/book/chapter/t_1':
                 // 保存 chapter 数据
                 const {b: bid, c: cid} = JSON.parse(request)
-                await window.wrx_weread_store.storeBookChapter(bid, cid, api, response)
+                await window.wrx_weread_store.storeBookChapter(bid, cid, pathname, response)
                 window.wrx_weread_store.markChapterDownloaded(cid)
                 break
             case '/web/book/publicinfos':

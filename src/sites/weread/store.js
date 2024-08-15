@@ -22,7 +22,7 @@
 
 
     // 存储 chapter 数据
-    async function storeBookChapter(bid, cid, type, content) {
+    async function storeBookChapter(bid, cid, pathname, content) {
         const db = await openDatabase()
 
         return new Promise((resolve, reject) => {
@@ -43,7 +43,7 @@
                     }
                     chapterObj.chapters.push(chapter)
                 }
-                chapter[type] = content
+                chapter[pathname] = content
 
                 // 写入store
                 chapterStore.put(chapterObj)
