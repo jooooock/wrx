@@ -1,6 +1,11 @@
 # wrx 魏如雪
 
-一套电子书导出工具，由【采集端([chrome插件](https://github.com/ckcock/wrx/releases))】和【导出端 (https://ebook-exporter.deno.dev )】两个部分组成，支持导出 HTML 和 EPUB 两种格式。本项目为**采集端**，**导出端**暂时没有开源。
+一套电子书导出工具，由【采集端([chrome插件](https://github.com/ckcock/wrx/releases))】和【解密端([在线网站](https://ebook-exporter.deno.dev))】两个组件构成，支持导出 HTML 和 EPUB 两种格式。本项目为**采集端**，**解密端**暂时没有开源。
+
+## 相关说明
+本套工具为电子书导出工具，导出的内容为你在电子书阅读网站上真正阅读过的内容，通过 **缓存 + 解密** 技术生成相关书籍的 HTML / EPUB 版本的电子书。
+
+因此，对于那些需要 vip 才能阅读的内容，如果你没有相关 vip 权益而无法阅读相关内容，则本工具也无能为力。
 
 ## 支持的电子书平台
 
