@@ -189,3 +189,7 @@ url: https://weread-1258476243.file.myqcloud.com/web/wrwebnjlogic/js/7.5853f5ce.
 last-modified: Thu, 15 Aug 2024 03:46:31 GMT
 etag: "bea18d09d6ec3c95c0ed50e32579d114"
 
+url: https://weread-1258476243.file.myqcloud.com/web/wrwebnjlogic/js/7.cfe384e5.js
+last-modified: Thu, 15 Aug 2024 04:58:12 GMT
+etag: "e3bfa60acdc5224250489eebd322b7aa"
+
