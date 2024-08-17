@@ -17,7 +17,7 @@
 
 ### 数据解密
 
-- [ ] 逆向解密算法
+- [x] 逆向解密算法
 - [ ] 调整解密端的导出逻辑
 
 ### 自动翻页
@@ -722,7 +722,7 @@ GET https://www.zhihu.com/api/v3/books/[bookId]/chapters
 ```
 </details>
 
-### 获取密钥接口
+### 获取章节的公钥接口
 
 接口地址:
 ```http request
@@ -740,7 +740,9 @@ GET https://www.zhihu.com/api/v3/books/[bookId]/chapters/[chapterUid]/download_i
 ```
 </details>
 
-### 获取章节资源路径接口
+其中，`key_hash`参与签名的计算，`key`则用于加密客户端生成的一次性密码参数，加密后通过`trans_key`传给后端。
+
+### 获取章节资源接口
 
 接口地址:
 ```http request
@@ -775,39 +777,23 @@ trans_key: 2eg1rIgURbckAtGLuWMEs4ZEWQzYugrFLWnZo+O+qu0GJ2xlACgZ73gIqc0b1M+Dh43RQ
 }
 ```
 
-其中，`html_path`字段即为该章节的文件地址，直接下载该文件需要解密其内容。
+其中，`html_path`字段即为该章节的文件地址，直接下载该文件可得到密文内容。`key`为解密该内容的密码，只不过这个密码不是明文，是经过我们前面生成的那个一次性密码用`aes-128-cfb8`算法加密得到的。
 </details>
+
+
 
 ## 加解密算法分析
 
-### 流程梳理
+### 流程整个梳理
 
-1. 调用【获取密钥接口】获取到对应章节的`key`和`keyHash`参数
-2. 调用【获取章节资源路径接口】，对应参数的算法见下面的代码，这一步获取到 html/css 等资源的路径，以及用于解密的`key`
+1. 调用【获取章节的公钥接口】获取到对应章节的公钥`key`和`keyHash`参数
+2. 调用【获取章节资源接口】获取章节的html路径，以及解密所需的`key`，参数的签名及加密算法见下面的代码
 
 ```ts
-// 解密数据
-function decrypt(secret, data, encoding) {
-    let header, body;
-    if ("string" == typeof data) {
-        let buf = Buffer.from(data, "base64");
-        header = Buffer.alloc(16)
-        body = Buffer.alloc(buf.length - 16)
-        buf.copy(header, 0, 0, 16)
-        buf.copy(body, 0, 16)
-    } else {
-        if (!(data instanceof Buffer))
-            return "";
-        header = data.slice(0, 16)
-        body = data.slice(16)
-    }
-    return crypto.createDecipheriv("aes-128-cfb8", secret, header).update(body, null, encoding)
-}
-
-// 计算 transKey
-function getTransKey(key: string, iv: string) {
-    const body = Buffer.alloc(128 - iv.length)
-    const buf = Buffer.concat([body, Buffer.from(iv)])
+// 计算 transKey，使用公钥 key 对 secret 进行加密，即得到 trans_key
+function getTransKey(key: string, secret: string) {
+    const body = Buffer.alloc(128 - secret.length)
+    const buf = Buffer.concat([body, Buffer.from(secret)])
     return crypto.publicEncrypt({
         key: key,
         padding: 3,
@@ -823,26 +809,60 @@ function signPayload(payload: string[]) {
     return e.digest("hex")
 }
 
-// 这两个参数由【获取密钥接口】获取
+// 这两个参数由【获取章节的公钥接口】获取
 const key = ''
-const keyHash = ''
-
-// 生成一个随机字符串作为iv，在后面解密时使用
-const iv = Array.from({length: 16}).map(() => Math.floor(16 * Math.random()).toString(16).toUpperCase()).join("")
+const key_hash = ''
 
 const client_id = "5774b305d2ae4469a2c9258956ea48";
 const timestamp = Number(new Date())
-const transKey = getTransKey(key, iv)
-const signature = signPayload([chapterUid, transKey, client_id, timestamp, keyHash])
+
+// 生成临时密码
+const secret = Array.from({length: 16}).map(() => Math.floor(16 * Math.random()).toString(16).toUpperCase()).join("")
+
+// 对临时密码进行公钥加密，以便在网络上传输
+const transKey = getTransKey(key, secret)
+const signature = signPayload([chapterUid, transKey, client_id, timestamp, key_hash])
 ```
 
 3. 下载 html 资源，拿到密文
 4. 还原密钥并进行解密
 
 ```js
-// iv 即上面生成的随机字符串，key是【获取章节资源路径接口】返回的
-const secret = decrypt(iv, key, 'utf8')
+// 用 aes-128-cfb8 算法解密数据
+function decrypt(secret, data, encoding) {
+    let iv, body;
+    if ("string" == typeof data) {
+        let buf = Buffer.from(data, "base64");
+        iv = Buffer.alloc(16)
+        body = Buffer.alloc(buf.length - 16)
+        buf.copy(iv, 0, 0, 16)
+        buf.copy(body, 0, 16)
+    } else {
+        iv = data.slice(0, 16)
+        body = data.slice(16)
+    }
+    return crypto.createDecipheriv("aes-128-cfb8", secret, iv).update(body, null, encoding)
+}
+
+// secret 即上面生成的临时密码，key是【获取章节资源接口】返回的
+const htmlSecret = decrypt(secret, key, 'utf8')
 
 // buffer 为密文内容
-const plainText = decrypt(secret, buffer, 'utf8')
+const plainText = decrypt(htmlSecret, buffer, 'utf8')
 ```
+
+### 总结
+
+整个加解密的过程如下：
+
+知乎服务器对每本书的每个章节的`html`内容用`aes-128-cfb8`对称加密算法进行加密，并保存该章节对应的密码(每个章节都有自己的密码，我们称这个密码为`k1`)。
+
+然后浏览器在查看该章节的内容时，会在前端生成一个临时密码(我们称为`k2`)，这个`k2`并不会在网络上传输，只会保留在本地内存中。
+
+然后前端用一对公私钥中的公钥对`k2`进行加密并传给知乎服务器，由于`k2`是用非对称加密算法加密的，所以只有知乎才能解密出`k2`的内容。
+
+然后知乎服务器用`k2`作为密码，使用对称加密算法`aes-128-cfb8`对`k1`进行加密，并返回给前端(【获取章节资源接口】所返回的`key`)。
+
+然后前端使用相同的对称加密算法`aes-128-cfb8`解密出`k1`(因为加密的key就是`k2`)，然后下载html密文，并用`k1`解密其内容。
+
+最后，至于是每个章节都有一对公私钥，还是说所有书籍共用一对公私钥，都无所谓。因为通过网络的数据都不可能解密出`k2`的内容。

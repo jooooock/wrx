@@ -395,12 +395,12 @@
     ast-types "^0.14.1"
     recast "^0.20.3"
 
-"@types/node@^20.10.4":
-  version "20.14.15"
-  resolved "https://registry.npmjs.org/@types/node/-/node-20.14.15.tgz#e59477ab7bc7db1f80c85540bfd192a0becc588b"
-  integrity sha512-Fz1xDMCF/B00/tYSVMlmK7hVeLh7jE5f3B7X1/hmV0MJBwE27KlS7EvD/Yp+z1lm8mVhwV5w+n8jOZG8AfTlKw==
+"@types/node@^22.4.0":
+  version "22.4.0"
+  resolved "https://registry.npmjs.org/@types/node/-/node-22.4.0.tgz#c295fe1d6f5f58916cc61dbef8cf65b5b9b71de9"
+  integrity sha512-49AbMDwYUz7EXxKU/r7mXOsxwFr4BYbvB7tWYxVuLdb2ibd30ijjXINSMAHiEEZk5PCRBmW1gUeisn2VMKt3cQ==
   dependencies:
-    undici-types "~5.26.4"
+    undici-types "~6.19.2"
 
 agent-base@^7.0.2, agent-base@^7.1.0:
   version "7.1.1"
@@ -517,9 +517,9 @@ chalk@^4.1.2:
     supports-color "^7.1.0"
 
 chrome-types@^0.1.242:
-  version "0.1.297"
-  resolved "https://registry.npmjs.org/chrome-types/-/chrome-types-0.1.297.tgz#7ebfc05511c495da1f86afe322b2733b10dc149e"
-  integrity sha512-pVvyKx+JBZ5jh08bU6qL2IepJItfVOyGeMJtxfi9T5/LBXGbRlbCm7wMUvW51VqqGniPwJjtU20/M0oxH/wsFg==
+  version "0.1.298"
+  resolved "https://registry.npmjs.org/chrome-types/-/chrome-types-0.1.298.tgz#2c66e7f923d4db21916b568309ac7b550532aea1"
+  integrity sha512-wljyrze/hWQAXYlnfvMNYSNiLuLBAJZvrC2EPck4EJXfy1DbdnPFDsyAsKuN07hOTUBgrpwH51DqUvy79p7vHA==
 
 clone-deep@^4.0.1:
   version "4.0.1"
@@ -622,9 +622,9 @@ delayed-stream@~1.0.0:
   integrity sha512-ZySD7Nf91aLB0RxL4KGrKHBXl7Eds1DAmEdcoVawXnLD7SDhpNgtuII2aAkg7a7QS41jxPSZ17p4VdGnMHk3MQ==
 
 electron-to-chromium@^1.5.4:
-  version "1.5.6"
-  resolved "https://registry.npmjs.org/electron-to-chromium/-/electron-to-chromium-1.5.6.tgz#c81d9938b5a877314ad370feb73b4e5409b36abd"
-  integrity sha512-jwXWsM5RPf6j9dPYzaorcBSUg6AiqocPEyMpkchkvntaH9HGfOOMZwxMJjDY/XEs3T5dM7uyH1VhRMkqUU9qVw==
+  version "1.5.10"
+  resolved "https://registry.npmjs.org/electron-to-chromium/-/electron-to-chromium-1.5.10.tgz#2791f966880389f96078d5e784b0d500f71abd14"
+  integrity sha512-C3RDERDjrNW262GCRvpoer3a0Ksd66CtgDLxMHhzShQ8fhL4kwnpVXsJPAKg9xJjIROXUbLBrvtOzVAjALMIWA==
 
 entities@^4.4.0:
   version "4.5.0"
@@ -1220,10 +1220,10 @@ tslib@^2.0.1:
   resolved "https://registry.npmjs.org/tslib/-/tslib-2.6.3.tgz#0438f810ad7a9edcde7a241c3d80db693c8cbfe0"
   integrity sha512-xNvxJEOUiWPGhUuUdQgAJPKOOJfGnIyKySOc09XkKsgdUV/3E2zvwZYdejjmRgPCgcym1juLH3226yA7sEFJKQ==
 
-undici-types@~5.26.4:
-  version "5.26.5"
-  resolved "https://registry.npmjs.org/undici-types/-/undici-types-5.26.5.tgz#bcd539893d00b56e964fd2657a4866b221a65617"
-  integrity sha512-JlCMO+ehdEIKqlFxk6IfVoAUVmgz7cU7zD/h9XZ0qzeosSHmUJVOzSQvvYSYWXkFXC+IfLKSIffhv0sVZup6pA==
+undici-types@~6.19.2:
+  version "6.19.6"
+  resolved "https://registry.npmjs.org/undici-types/-/undici-types-6.19.6.tgz#e218c3df0987f4c0e0008ca00d6b6472d9b89b36"
+  integrity sha512-e/vggGopEfTKSvj4ihnOLTsqhrKRN3LeO6qSN/GxohhuRv8qH9bNQ4B8W7e/vFL+0XTnmHPB4/kegunZGA4Org==
 
 universalify@^0.2.0:
   version "0.2.0"
