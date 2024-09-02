@@ -94,6 +94,19 @@
     "id": 8,
     "priority": 1,
     "condition": {
+      "urlFilter": "7.e5ed2744.js"
+    },
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/overrides/weread/7.e5ed2744.js"
+      }
+    }
+  },
+  {
+    "id": 9,
+    "priority": 1,
+    "condition": {
       "urlFilter": "7.f8cd399c.js"
     },
     "action": {
