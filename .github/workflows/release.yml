@@ -55,8 +55,8 @@ jobs:
 
       - name: 提交代码
         run: |
-          git config --global user.name Jock
-          git config --global user.email findsource@proton.me
+          git config --local user.name bot
+          git config --local user.email bot@github.com
           git add .
           git commit -m "release $(echo $version)"
           git tag $(echo $version)
