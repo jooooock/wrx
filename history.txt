@@ -221,3 +221,7 @@ url: https://weread-1258476243.file.myqcloud.com/web/wrwebnjlogic/js/7.bcc01791.
 last-modified: Wed, 04 Sep 2024 03:32:08 GMT
 etag: "2aa1e4060aa1baf06cf7a1e09e329ede"
 
+url: https://cdn.weread.qq.com/web/wrwebnjlogic/js/7.1c8aad8c.js
+last-modified: Wed, 04 Sep 2024 11:22:54 GMT
+etag: "d220b92f3624826c5ab632a114ab3e8a"
+
