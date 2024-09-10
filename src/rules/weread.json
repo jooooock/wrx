@@ -16,12 +16,12 @@
     "id": 2,
     "priority": 1,
     "condition": {
-      "urlFilter": "7.5853f5ce.js"
+      "urlFilter": "7.22936e1b.js"
     },
     "action": {
       "type": "redirect",
       "redirect": {
-        "extensionPath": "/overrides/weread/7.5853f5ce.js"
+        "extensionPath": "/overrides/weread/7.22936e1b.js"
       }
     }
   },
