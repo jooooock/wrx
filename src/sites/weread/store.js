@@ -167,9 +167,11 @@
                         }
 
                         // 这里需要把   替换成普通空格
-                        if (tocData.title.replace(re, '').replaceAll(' ', ' ') === liTitle) {
+                        if (tocData.title.replace(re, '').replaceAll(' ', ' ').replaceAll('\'', ' ') === liTitle) {
                             $li.dataset.cid = window.wrx_weread_utils.hash(tocData.chapterUid)
                         } else {
+                            // console.log(tocData.title)
+                            // console.log(liTitle)
                             console.warn('这本书的目录数据需要特殊适配，请联系开发者')
                         }
                     }
