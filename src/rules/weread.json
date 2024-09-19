@@ -120,19 +120,6 @@
     "id": 10,
     "priority": 1,
     "condition": {
-      "urlFilter": "7.cfe384e5.js"
-    },
-    "action": {
-      "type": "redirect",
-      "redirect": {
-        "extensionPath": "/overrides/weread/7.cfe384e5.js"
-      }
-    }
-  },
-  {
-    "id": 11,
-    "priority": 1,
-    "condition": {
       "urlFilter": "7.e5ed2744.js"
     },
     "action": {
