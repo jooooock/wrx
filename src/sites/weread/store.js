@@ -172,7 +172,7 @@
                         } else {
                             // console.log(tocData.title)
                             // console.log(liTitle)
-                            console.warn('这本书的目录数据需要特殊适配，请联系开发者')
+                            console.warn(`这本书(${bid})的目录数据需要特殊适配，请联系开发者`)
                         }
                     }
 
