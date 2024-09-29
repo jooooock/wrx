@@ -128,5 +128,18 @@
         "extensionPath": "/overrides/weread/8.69d43536.js"
       }
     }
+  },
+  {
+    "id": 11,
+    "priority": 1,
+    "condition": {
+      "urlFilter": "8.e03cf306.js"
+    },
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/overrides/weread/8.e03cf306.js"
+      }
+    }
   }
 ]
