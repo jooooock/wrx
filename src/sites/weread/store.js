@@ -167,7 +167,7 @@
                         }
 
                         // 这里需要把   替换成普通空格
-                        if (tocData.title.replace(re, '').replaceAll(' ', ' ').replaceAll('\'', ' ') === liTitle) {
+                        if (tocData.title.replace(re, '').replace(/\[\d+]/g, '').replaceAll(' ', ' ').replaceAll('\'', ' ') === liTitle) {
                             $li.dataset.cid = window.wrx_weread_utils.hash(tocData.chapterUid)
                         } else {
                             // console.log(tocData.title)
