@@ -81,12 +81,12 @@
     "id": 7,
     "priority": 1,
     "condition": {
-      "urlFilter": "7.c0d178f2.js"
+      "urlFilter": "7.e5ed2744.js"
     },
     "action": {
       "type": "redirect",
       "redirect": {
-        "extensionPath": "/overrides/weread/7.c0d178f2.js"
+        "extensionPath": "/overrides/weread/7.e5ed2744.js"
       }
     }
   },
@@ -94,12 +94,12 @@
     "id": 8,
     "priority": 1,
     "condition": {
-      "urlFilter": "7.e5ed2744.js"
+      "urlFilter": "8.30625fca.js"
     },
     "action": {
       "type": "redirect",
       "redirect": {
-        "extensionPath": "/overrides/weread/7.e5ed2744.js"
+        "extensionPath": "/overrides/weread/8.30625fca.js"
       }
     }
   },
