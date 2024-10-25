@@ -68,12 +68,12 @@
     "id": 6,
     "priority": 1,
     "condition": {
-      "urlFilter": "7.bcc01791.js"
+      "urlFilter": "8.044e9459.js"
     },
     "action": {
       "type": "redirect",
       "redirect": {
-        "extensionPath": "/overrides/weread/7.bcc01791.js"
+        "extensionPath": "/overrides/weread/8.044e9459.js"
       }
     }
   },
