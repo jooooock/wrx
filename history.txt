@@ -277,3 +277,7 @@ url: https://cdn.weread.qq.com/web/wrwebnjlogic/js/8.e3fd8354.js
 last-modified: Mon, 28 Oct 2024 08:31:26 GMT
 etag: "bfee2fa0c1cc25d241fce74886e4fc4e"
 
+url: https://cdn.weread.qq.com/web/wrwebnjlogic/js/8.60621a39.js
+last-modified: Mon, 28 Oct 2024 11:57:54 GMT
+etag: "7cff54327350558301b1288bcf78461e"
+
