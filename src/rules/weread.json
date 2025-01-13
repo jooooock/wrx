@@ -55,12 +55,12 @@
     "id": 5,
     "priority": 1,
     "condition": {
-      "urlFilter": "8.69d43536.js"
+      "urlFilter": "8.a0b49d48.js"
     },
     "action": {
       "type": "redirect",
       "redirect": {
-        "extensionPath": "/overrides/weread/8.69d43536.js"
+        "extensionPath": "/overrides/weread/8.a0b49d48.js"
       }
     }
   },
