@@ -3,6 +3,19 @@
     "id": 1,
     "priority": 1,
     "condition": {
+      "urlFilter": "8.126c7638.js"
+    },
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/overrides/weread/8.126c7638.js"
+      }
+    }
+  },
+  {
+    "id": 2,
+    "priority": 1,
+    "condition": {
       "urlFilter": "8.1b1a58af.js"
     },
     "action": {
@@ -13,7 +26,7 @@
     }
   },
   {
-    "id": 2,
+    "id": 3,
     "priority": 1,
     "condition": {
       "urlFilter": "8.1f0816c9.js"
@@ -26,7 +39,7 @@
     }
   },
   {
-    "id": 3,
+    "id": 4,
     "priority": 1,
     "condition": {
       "urlFilter": "8.2b33baa9.js"
@@ -39,7 +52,7 @@
     }
   },
   {
-    "id": 4,
+    "id": 5,
     "priority": 1,
     "condition": {
       "urlFilter": "8.60621a39.js"
@@ -52,7 +65,7 @@
     }
   },
   {
-    "id": 5,
+    "id": 6,
     "priority": 1,
     "condition": {
       "urlFilter": "8.6727fad4.js"
@@ -65,7 +78,7 @@
     }
   },
   {
-    "id": 6,
+    "id": 7,
     "priority": 1,
     "condition": {
       "urlFilter": "8.82196ea9.js"
@@ -78,7 +91,7 @@
     }
   },
   {
-    "id": 7,
+    "id": 8,
     "priority": 1,
     "condition": {
       "urlFilter": "8.a0b49d48.js"
@@ -91,7 +104,7 @@
     }
   },
   {
-    "id": 8,
+    "id": 9,
     "priority": 1,
     "condition": {
       "urlFilter": "8.c02802b1.js"
@@ -100,19 +113,6 @@
       "type": "redirect",
       "redirect": {
         "extensionPath": "/overrides/weread/8.c02802b1.js"
-      }
-    }
-  },
-  {
-    "id": 9,
-    "priority": 1,
-    "condition": {
-      "urlFilter": "8.e3fd8354.js"
-    },
-    "action": {
-      "type": "redirect",
-      "redirect": {
-        "extensionPath": "/overrides/weread/8.e3fd8354.js"
       }
     }
   },
