@@ -3,6 +3,19 @@
     "id": 1,
     "priority": 1,
     "condition": {
+      "urlFilter": "8.09d8684c.js"
+    },
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/overrides/weread/8.09d8684c.js"
+      }
+    }
+  },
+  {
+    "id": 2,
+    "priority": 1,
+    "condition": {
       "urlFilter": "8.126c7638.js"
     },
     "action": {
@@ -13,7 +26,7 @@
     }
   },
   {
-    "id": 2,
+    "id": 3,
     "priority": 1,
     "condition": {
       "urlFilter": "8.1b1a58af.js"
@@ -26,7 +39,7 @@
     }
   },
   {
-    "id": 3,
+    "id": 4,
     "priority": 1,
     "condition": {
       "urlFilter": "8.1f0816c9.js"
@@ -39,7 +52,7 @@
     }
   },
   {
-    "id": 4,
+    "id": 5,
     "priority": 1,
     "condition": {
       "urlFilter": "8.2b33baa9.js"
@@ -48,19 +61,6 @@
       "type": "redirect",
       "redirect": {
         "extensionPath": "/overrides/weread/8.2b33baa9.js"
-      }
-    }
-  },
-  {
-    "id": 5,
-    "priority": 1,
-    "condition": {
-      "urlFilter": "8.60621a39.js"
-    },
-    "action": {
-      "type": "redirect",
-      "redirect": {
-        "extensionPath": "/overrides/weread/8.60621a39.js"
       }
     }
   },
