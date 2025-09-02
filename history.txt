@@ -393,3 +393,7 @@ url: https://cdn.weread.qq.com/web/wrwebnjlogic/js/9.7ff82433.js
 last-modified: Mon, 01 Sep 2025 12:09:46 GMT
 etag: "3feb82b00762a94c69ba41866473e37f"
 
+url: https://cdn.weread.qq.com/web/wrwebnjlogic/js/9.9935bd1a.js
+last-modified: Tue, 02 Sep 2025 09:24:39 GMT
+etag: "557813646390d7b283418b62b1d458d7"
+
