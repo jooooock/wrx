@@ -3,12 +3,12 @@
     "id": 1,
     "priority": 1,
     "condition": {
-      "urlFilter": "9.03f243fc.js"
+      "urlFilter": "9.22ce0954.js"
     },
     "action": {
       "type": "redirect",
       "redirect": {
-        "extensionPath": "/overrides/weread/9.03f243fc.js"
+        "extensionPath": "/overrides/weread/9.22ce0954.js"
       }
     }
   },
