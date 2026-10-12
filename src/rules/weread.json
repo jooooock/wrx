@@ -94,12 +94,12 @@
     "id": 8,
     "priority": 1,
     "condition": {
-      "urlFilter": "9.97564774.js"
+      "urlFilter": "9.93590946.js"
     },
     "action": {
       "type": "redirect",
       "redirect": {
-        "extensionPath": "/overrides/weread/9.97564774.js"
+        "extensionPath": "/overrides/weread/9.93590946.js"
       }
     }
   },
