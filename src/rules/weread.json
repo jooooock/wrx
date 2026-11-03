@@ -42,12 +42,12 @@
     "id": 4,
     "priority": 1,
     "condition": {
-      "urlFilter": "9.7ff82433.js"
+      "urlFilter": "9.625560b7.js"
     },
     "action": {
       "type": "redirect",
       "redirect": {
-        "extensionPath": "/overrides/weread/9.7ff82433.js"
+        "extensionPath": "/overrides/weread/9.625560b7.js"
       }
     }
   },
